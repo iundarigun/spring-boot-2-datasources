@@ -9,8 +9,18 @@ sudo docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mysql-local -d m
 docker start mysql-local
 # Executar um mysql por comandos no mysql que está up
 docker exec -it mysql-local mysql -uroot -proot
+# Criar database
+create database spring_boot_2_datasources;
+use spring_boot_2_datasources;
+# Criar tabelas e registros
+create table teste ( id int(11), primary key (id));
+insert into teste values (1);
+insert into teste values (2);
+insert into teste values (3);
 # Remover caso precisar
 docker rm mysql-local
+
+
 
 # Criando um docker postgres com user e password
 docker run --name local-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
@@ -18,11 +28,14 @@ docker run --name local-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d p
 docker start local-postgres
 # Executar um postgres por comandos no postgres que está up
 docker run -it --rm --link local-postgres:postgres postgres psql -h postgres -U postgres
-# Executar um postgres por comandos no postgres que está up conetando diretamente no banco "casadocodigo"
-docker run -it --rm --link local-postgres:postgres postgres psql -h postgres -U postgres -d casadocodigo
 # criar novo banco
-create database <nome>
+create database spring_boot_2_datasources
 # connetar ao banco
-\connect <nome>
+\connect spring_boot_2_datasources
+# Criar tabelas e registros
+create table teste ( id int, primary key (id));
+insert into teste values (4);
+insert into teste values (5);
+insert into teste values (6);
 # sair
 \q
