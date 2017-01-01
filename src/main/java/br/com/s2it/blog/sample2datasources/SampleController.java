@@ -12,12 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleController {
 
     @Autowired
-    @Qualifier("primaryJdbcTemplate")
-    private JdbcTemplate primaryJdbcTemplate;
+    private JdbcTemplate mysqlJdbcTemplate;
 
     @Autowired
-    @Qualifier("secundaryJdbcTemplate")
-    private JdbcTemplate secundaryJdbcTemplate;
+    private JdbcTemplate postgresJdbcTemplate;
 
     @RequestMapping(path = "/test-db", method = RequestMethod.GET)
     public Integer testDB(){
@@ -25,10 +23,10 @@ public class SampleController {
     }
 
     private Integer contarPrimary(){
-        return primaryJdbcTemplate.queryForObject("select sum(id) from teste", Integer.class);
+        return mysqlJdbcTemplate.queryForObject("select sum(id) from teste", Integer.class);
     }
 
     private Integer contarSecundary(){
-        return secundaryJdbcTemplate.queryForObject("select sum(id) from teste", Integer.class);
+        return postgresJdbcTemplate.queryForObject("select sum(id) from teste", Integer.class);
     }
 }
