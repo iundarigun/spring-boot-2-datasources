@@ -12,7 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 public class SpringBoot2DatasourcesApplication {
 
     public static void main(String[] args) {

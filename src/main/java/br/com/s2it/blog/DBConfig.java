@@ -10,9 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 
 
-/**
- * Created by uri on 01/01/17.
- */
 @Configuration
 public class DBConfig {
 
